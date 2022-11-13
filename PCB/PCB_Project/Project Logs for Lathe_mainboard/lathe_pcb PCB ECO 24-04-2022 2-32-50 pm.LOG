@@ -1,0 +1,24 @@
+Change component parameters: Designator = "F1" ("F1"); Footprint = "RESC3216N"; UniqueID = "\XZJZAHGD" ("\XZJZAHGD")
+Change component parameters (AddParameter): Name = "Manufacturer"; Value = "MULTICOMP"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Manufacturer Part Number"; Value = "MC12CF 002"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Manufacturer PN"; Value = "MC12CF 002"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Storage Location"; Value = "PCB Assembly WS"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Supplier"; Value = "ECE Dept"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Supplier 1"; Value = "Farnell"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Supplier Part Number 1"; Value = "1841029"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Value"; Value = "2A"; VariantName = "[No Variations]"
+Added Component: Designator=R10(RESC1608L)
+Add component (AddParameter): Name = "Storage Location"; Value = "PCB Assembly WS"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Supplier"; Value = "ECE Dept"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Value"; Value = "0R"; VariantName = "[No Variations]"
+Added Component: Designator=R11(RESC1608L)
+Add component (AddParameter): Name = "Storage Location"; Value = "PCB Assembly WS"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Supplier"; Value = "ECE Dept"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Value"; Value = "0R"; VariantName = "[No Variations]"
+Added Pin To Net: NetName=NetB6V_1 Pin=R10-1
+Added Pin To Net: NetName=12 V Pin=R10-2
+Added Pin To Net: NetName=VCC Pin=R11-1
+Added Pin To Net: NetName=5V Pin=R11-2
+Added Member To Class: ClassName=lathe_mainboard Member=Component R10 0R
+Added Member To Class: ClassName=lathe_mainboard Member=Component R11 0R
+Added Room: Name=lathe_mainboard

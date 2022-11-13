@@ -1,0 +1,4 @@
+Removed Pin From Net: NetName=POT_IN Pin=J3-7A
+Removed Pin From Net: NetName=AUTO_EN Pin=J3-10A
+Added Pin To Net: NetName=AUTO_EN Pin=J3-7A
+Added Pin To Net: NetName=POT_IN Pin=J3-10A

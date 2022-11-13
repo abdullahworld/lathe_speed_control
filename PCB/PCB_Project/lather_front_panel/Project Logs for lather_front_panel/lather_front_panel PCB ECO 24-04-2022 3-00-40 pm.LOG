@@ -1,0 +1,64 @@
+Removed Pin From Net: NetName=5V Pin=J1-1A
+Removed Pin From Net: NetName=GND Pin=J1-2A
+Removed Pin From Net: NetName=SCL Pin=J1-3A
+Removed Pin From Net: NetName=GND Pin=J1-4A
+Removed Pin From Net: NetName=SDA Pin=J1-5A
+Removed Pin From Net: NetName=GND Pin=J1-6A
+Removed Pin From Net: NetName=POT_IN Pin=J1-7A
+Removed Pin From Net: NetName=BUT_CC Pin=J1-8A
+Removed Pin From Net: NetName=BUT_CCW Pin=J1-9A
+Removed Pin From Net: NetName=AUTO_EN Pin=J1-10A
+Removed Pin From Net: NetName=RGB_PWM Pin=J1-11A
+Removed Pin From Net: NetName=GND Pin=J1-12A
+Added Component: Designator=J?(MOLX-52610-1272)
+Add component (AddParameter): Name = "Circuits (Loaded)"; Value = "12"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink1Description"; Value = "Manufacturer URL"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink1URL"; Value = "http://www.molex.com/molex/index.jsp"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink2Description"; Value = "Datasheet"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink2URL"; Value = "http://www.molex.com/webdocs/datasheets/pdf/en-us/0526101272_FFC_FPC_CONNECTORS.pdf"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink3Description"; Value = "Package Specification"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink3URL"; Value = "http://www.molex.com/pdm_docs/sd/526101272_sd.pdf"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Contact Position"; Value = "N/A"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Current (Max per Contact)"; Value = "1A"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Durability (mating cycles max)"; Value = "30"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Entry Angle"; Value = "Vertical"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer"; Value = "Molex"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Mated Height"; Value = "5.75mm"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Material - Metal"; Value = "Phosphor Bronze"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Material - Plating Mating"; Value = "Gold"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Material - Plating Termination"; Value = "Tin"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Mounting Technology"; Value = "Surface Mount"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Number of Rows"; Value = "1"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Orientation"; Value = "Vertical"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "PackageDescription"; Value = "12-Lead FPC Connector, Pitch 1.0 mm"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "PackageReference"; Value = "52610-1272"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "PackageVersion"; Value = "Rev. G, 02/2012"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Packing"; Value = "Tape and Reel"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "PartNumber"; Value = "52610-1272"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "PCB Locator"; Value = "No"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "PCB Retention"; Value = "None"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Pitch - Mating Interface"; Value = "1.00mm"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Polarized to PCB"; Value = "No"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "RoHS"; Value = "TRUE"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Stackable"; Value = "No"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Voltage (Max)"; Value = "125V AC (RMS)/DC"; VariantName = "[No Variations]"
+Added Pin To Net: NetName=5V Pin=J?-1A
+Added Pin To Net: NetName=GND Pin=J?-2A
+Added Pin To Net: NetName=SCL Pin=J?-3A
+Added Pin To Net: NetName=GND Pin=J?-4A
+Added Pin To Net: NetName=SDA Pin=J?-5A
+Added Pin To Net: NetName=GND Pin=J?-6A
+Added Pin To Net: NetName=POT_IN Pin=J?-7A
+Added Pin To Net: NetName=AUTO_EN Pin=J?-8A
+Added Pin To Net: NetName=BUT_CCW Pin=J?-9A
+Added Pin To Net: NetName=BUT_CC Pin=J?-10A
+Added Pin To Net: NetName=RGB_PWM Pin=J?-11A
+Added Pin To Net: NetName=GND Pin=J?-12A
+Added Member To Class: ClassName=lather_front_panel Member=Component D1 RGB LED
+Added Member To Class: ClassName=lather_front_panel Member=Component H1 4 Pin Molex KK Hdr
+Added Member To Class: ClassName=lather_front_panel Member=Component J? 52610-1272
+Added Member To Class: ClassName=lather_front_panel Member=Component R1 P0915N-FC15BR100K
+Added Member To Class: ClassName=lather_front_panel Member=Component S1 DPDT Switch
+Added Member To Class: ClassName=lather_front_panel Member=Component S2 DPDT Switch
+Added Member To Class: ClassName=lather_front_panel Member=Component S3 DPDT Switch
+Added Room: Name=lather_front_panel

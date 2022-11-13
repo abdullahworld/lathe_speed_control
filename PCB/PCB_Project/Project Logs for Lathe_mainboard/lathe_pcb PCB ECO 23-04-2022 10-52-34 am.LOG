@@ -1,0 +1,4 @@
+Removed Pin From Net: NetName=BUT_CC Pin=J3-8A
+Removed Pin From Net: NetName=BUT_CCW Pin=J3-9A
+Added Pin To Net: NetName=BUT_CCW Pin=J3-8A
+Added Pin To Net: NetName=BUT_CC Pin=J3-9A

@@ -1,0 +1,33 @@
+Change Component Designator: OldDesignator=TP1 NewDesignator=MO
+Change Component Designator: OldDesignator=TP2 NewDesignator=12V
+Change Component Designator: OldDesignator=TP3 NewDesignator=B6V
+Change Component Designator: OldDesignator=TP4 NewDesignator=5V
+Change Component Designator: OldDesignator=TP5 NewDesignator=PH
+Change Component Designator: OldDesignator=TP6 NewDesignator=SLP
+Change Component Designator: OldDesignator=TP7 NewDesignator=EN
+Change Component Designator: OldDesignator=TP8 NewDesignator=OUT+
+Change Component Designator: OldDesignator=TP9 NewDesignator=OUT-
+Change Component Designator: OldDesignator=TP10 NewDesignator=SCL
+Change Component Designator: OldDesignator=TP11 NewDesignator=RGB
+Change Component Designator: OldDesignator=TP12 NewDesignator=SDA
+Change Component Designator: OldDesignator=TP13 NewDesignator=POT
+Change Component Designator: OldDesignator=TP14 NewDesignator=VCC
+Added Component: Designator=FA(TP_1206)
+Add component (AddParameter): Name = "Manufacturer"; Value = "Harwin Inc"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer Part Number"; Value = "S1751-46R"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer PN"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Mounting Type"; Value = "Surface Mount"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Price"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Storage Location"; Value = "ProtoPlace"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Supplier"; Value = "ECE Dept"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Supplier 1"; Value = "Digi-Key"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Supplier 2"; Value = "Farnell"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Supplier Part Number 1"; Value = "952-1478-2-ND"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Supplier Part Number 2"; Value = "1826282"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Type"; Value = "PC Test Point"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Value"; Value = "TP"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Verify"; Value = ""; VariantName = "[No Variations]"
+Added Pin To Net: NetName=nFAULT Pin=FA-1
+Change Net Name : Old Net Name=NetC1_2 New Net Name=NetB6V_1
+Added Member To Class: ClassName=lathe_mainboard Member=Component FA TP
+Added Room: Name=lathe_mainboard

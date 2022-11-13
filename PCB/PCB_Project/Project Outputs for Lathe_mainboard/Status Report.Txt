@@ -1,0 +1,12 @@
+Output: NC Drill Files
+Type  : NC Drill
+From  : Project [Lathe_mainboard.PrjPcb]
+   Generated File[lathe_pcb.TXT]
+   Generated File[lathe_pcb.LDP]
+   Generated File[lathe_pcb.DRR]
+
+
+Files Generated   : 3
+Documents Printed : 0
+
+Finished Output Generation At 3:21:09 pm On 24/04/2022

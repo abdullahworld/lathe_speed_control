@@ -1,0 +1,13 @@
+Output: NC Drill Files
+Type  : NC Drill
+From  : Project [lather_front_panel.PrjPcb]
+   Generated File[lather_front_panel.TXT]
+   Generated File[lather_front_panel-RectHoles.TXT]
+   Generated File[lather_front_panel.LDP]
+   Generated File[lather_front_panel.DRR]
+
+
+Files Generated   : 4
+Documents Printed : 0
+
+Finished Output Generation At 3:19:37 pm On 24/04/2022

@@ -1,0 +1,99 @@
+Added Component: Designator=D1(INDRD500W70D900H1220)
+Added Component: Designator=H1(MOLEX_KK_4_HDR)
+Add component (AddParameter): Name = "Manufacturer"; Value = "Molex"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer PN"; Value = "22-23-2041"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Price"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Storage Location"; Value = "ECE Dept Store"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Supplier"; Value = "ECE Dept"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Supplier 1"; Value = "Farnell"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Supplier 2"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Supplier Part Number 1"; Value = "9731164"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Supplier Part Number 2"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Value"; Value = "4 Pin Molex KK Hdr"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Verify"; Value = ""; VariantName = "[No Variations]"
+Added Component: Designator=J1(MOLX-52610-1272)
+Add component (AddParameter): Name = "Circuits (Loaded)"; Value = "12"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink1Description"; Value = "Manufacturer URL"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink1URL"; Value = "http://www.molex.com/molex/index.jsp"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink2Description"; Value = "Datasheet"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink2URL"; Value = "http://www.molex.com/webdocs/datasheets/pdf/en-us/0526101272_FFC_FPC_CONNECTORS.pdf"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink3Description"; Value = "Package Specification"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink3URL"; Value = "http://www.molex.com/pdm_docs/sd/526101272_sd.pdf"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Contact Position"; Value = "N/A"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Current (Max per Contact)"; Value = "1A"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Durability (mating cycles max)"; Value = "30"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Entry Angle"; Value = "Vertical"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer"; Value = "Molex"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Mated Height"; Value = "5.75mm"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Material - Metal"; Value = "Phosphor Bronze"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Material - Plating Mating"; Value = "Gold"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Material - Plating Termination"; Value = "Tin"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Mounting Technology"; Value = "Surface Mount"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Number of Rows"; Value = "1"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Orientation"; Value = "Vertical"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "PackageDescription"; Value = "12-Lead FPC Connector, Pitch 1.0 mm"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "PackageReference"; Value = "52610-1272"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "PackageVersion"; Value = "Rev. G, 02/2012"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Packing"; Value = "Tape and Reel"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "PartNumber"; Value = "52610-1272"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "PCB Locator"; Value = "No"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "PCB Retention"; Value = "None"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Pitch - Mating Interface"; Value = "1.00mm"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Polarized to PCB"; Value = "No"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "RoHS"; Value = "TRUE"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Stackable"; Value = "No"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Voltage (Max)"; Value = "125V AC (RMS)/DC"; VariantName = "[No Variations]"
+Added Component: Designator=R1(TRIM_P0915N-FC15BR100K)
+Add component (AddParameter): Name = "Availability"; Value = "Warning"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Check_prices"; Value = "https://www.snapeda.com/parts/P0915N-FC15BR100K/TT%20Electronics/BI/view-part/1438723/?ref=eda"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "MF"; Value = "TT Electronics/BI"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "MP"; Value = "P0915N-FC15BR100K"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Package"; Value = "None"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Price"; Value = "None"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Purchase-URL"; Value = "https://pricing.snapeda.com/search/part/P0915N-FC15BR100K/?ref=eda"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "SnapEDA_Link"; Value = "https://www.snapeda.com/parts/P0915N-FC15BR100K/TT%20Electronics/BI/view-part/1438723/?ref=snap"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Value"; Value = ""; VariantName = "[No Variations]"
+Added Component: Designator=S1(TL2230EEF100)
+Added Component: Designator=S2(TL2230EEF100)
+Added Component: Designator=S3(TL2230EEF100)
+Added Pin To Net: NetName=5V Pin=H1-3
+Added Pin To Net: NetName=5V Pin=J1-1A
+Added Pin To Net: NetName=5V Pin=R1-1
+Added Pin To Net: NetName=5V Pin=S1-2
+Added Pin To Net: NetName=5V Pin=S2-2
+Added Pin To Net: NetName=5V Pin=S3-2
+Added Net: Name=5V
+Added Pin To Net: NetName=AUTO_EN Pin=J1-10A
+Added Pin To Net: NetName=AUTO_EN Pin=S3-3
+Added Net: Name=AUTO_EN
+Added Pin To Net: NetName=BUT_CC Pin=J1-8A
+Added Pin To Net: NetName=BUT_CC Pin=S1-3
+Added Net: Name=BUT_CC
+Added Pin To Net: NetName=BUT_CCW Pin=J1-9A
+Added Pin To Net: NetName=BUT_CCW Pin=S2-3
+Added Net: Name=BUT_CCW
+Added Pin To Net: NetName=GND Pin=D1-1
+Added Pin To Net: NetName=GND Pin=H1-4
+Added Pin To Net: NetName=GND Pin=J1-2A
+Added Pin To Net: NetName=GND Pin=J1-4A
+Added Pin To Net: NetName=GND Pin=J1-6A
+Added Pin To Net: NetName=GND Pin=J1-12A
+Added Pin To Net: NetName=GND Pin=R1-3
+Added Net: Name=GND
+Added Pin To Net: NetName=NetR1_S1 Pin=R1-S1
+Added Pin To Net: NetName=NetR1_S1 Pin=R1-S2
+Added Net: Name=NetR1_S1
+Added Pin To Net: NetName=POT_IN Pin=J1-7A
+Added Pin To Net: NetName=POT_IN Pin=R1-2
+Added Net: Name=POT_IN
+Added Pin To Net: NetName=RGB_PWM Pin=D1-2
+Added Pin To Net: NetName=RGB_PWM Pin=J1-11A
+Added Net: Name=RGB_PWM
+Added Pin To Net: NetName=SCL Pin=H1-1
+Added Pin To Net: NetName=SCL Pin=J1-3A
+Added Net: Name=SCL
+Added Pin To Net: NetName=SDA Pin=H1-2
+Added Pin To Net: NetName=SDA Pin=J1-5A
+Added Net: Name=SDA
+Added Class: Name=lather_front_panel
+Added Room: Name=lather_front_panel

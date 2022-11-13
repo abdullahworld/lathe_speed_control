@@ -1,0 +1,7 @@
+Added Pin To Net: NetName=SCL Pin=J1-3A
+Added Pin To Net: NetName=SDA Pin=J1-5A
+Added Pin To Net: NetName=POT_IN Pin=J1-7A
+Added Pin To Net: NetName=BUT_CC Pin=J1-8A
+Added Pin To Net: NetName=BUT_CCW Pin=J1-9A
+Added Pin To Net: NetName=AUTO_EN Pin=J1-10A
+Added Pin To Net: NetName=RGB_PWM Pin=J1-11A

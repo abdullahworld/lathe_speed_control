@@ -1,0 +1,7 @@
+Remove Pin=J1-3A From Net=SCL
+Remove Pin=J1-5A From Net=SDA
+Remove Pin=J1-7A From Net=POT_IN
+Remove Pin=J1-8A From Net=BUT_CC
+Remove Pin=J1-9A From Net=BUT_CCW
+Remove Pin=J1-10A From Net=AUTO_EN
+Remove Pin=J1-11A From Net=RGB_PWM
