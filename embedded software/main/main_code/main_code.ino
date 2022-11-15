@@ -5,7 +5,7 @@
 #define R_POT A1
 #define AUTO 8 //S3
 #define BUT_CCW 7 //S2
-#define BUT_CW 6 //S1
+#define BUT_CW 5 //S1
 
 
 
@@ -54,7 +54,7 @@ void loop()
   Serial.println(cw_val);
 
   Serial.print("CCW Val: ");
-  Serial.println(ccw_val);
+  Serial.println(ccw_val  );
 
 
 
