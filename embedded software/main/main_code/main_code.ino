@@ -2,19 +2,20 @@
 #include <LiquidCrystal_I2C.h>
 #include <Wire.h>
 
+
+//User controls
 #define R_POT A1
 #define AUTO 8 //S3
 #define BUT_CCW 7 //S2
 #define BUT_CW 5 //S1
 
-
+//Motor controls
+#define EN 3
+#define PHASE 4
 
 LiquidCrystal_I2C lcd(0x27, 16, 2); // set the LCD address to 0x27 for a 16 chars and 2 line display
 
-
-
 int r_pot;
-
 
 void setup()
 {
@@ -31,6 +32,12 @@ void setup()
   pinMode(AUTO, INPUT_PULLUP);
   pinMode(BUT_CCW, INPUT_PULLUP);
   pinMode(BUT_CW, INPUT_PULLUP);
+
+  pinMode(EN, OUTPUT);
+  pinMode(PHASE, OUTPUT);
+
+  digitalWrite(EN, HIGH);
+  
 }
 
 void loop()
@@ -54,11 +61,8 @@ void loop()
   Serial.println(cw_val);
 
   Serial.print("CCW Val: ");
-  Serial.println(ccw_val  );
-
-
-
-  
-  
-  delay(100);
+  Serial.println(ccw_val);
+  digitalWrite(PHASE, HIGH);
+  delay(2000);
+  digitalWrite(PHASE, LOW);
 }
