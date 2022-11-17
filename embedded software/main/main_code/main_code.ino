@@ -12,6 +12,8 @@
 //Motor controls
 #define EN 3
 #define PHASE 4
+#define SLEEP 1
+
 
 LiquidCrystal_I2C lcd(0x27, 16, 2); // set the LCD address to 0x27 for a 16 chars and 2 line display
 
@@ -35,9 +37,10 @@ void setup()
 
   pinMode(EN, OUTPUT);
   pinMode(PHASE, OUTPUT);
+  pinMode(SLEEP, OUTPUT);
 
-  digitalWrite(EN, HIGH);
-  
+  //Sleep and EN pin are tied together.
+  analogWrite(EN, 127);
 }
 
 void loop()
@@ -53,7 +56,7 @@ void loop()
   int auto_val = digitalRead(AUTO);
   int cw_val = digitalRead(BUT_CW);
   int ccw_val = digitalRead(BUT_CCW);
-
+  
   Serial.print("Auto Val: ");
   Serial.println(auto_val);
 
@@ -63,6 +66,6 @@ void loop()
   Serial.print("CCW Val: ");
   Serial.println(ccw_val);
   digitalWrite(PHASE, HIGH);
-  delay(2000);
-  digitalWrite(PHASE, LOW);
+//  delay(2000);
+//  digitalWrite(PHASE, LOW);
 }
