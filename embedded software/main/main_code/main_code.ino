@@ -39,9 +39,26 @@ void setup()
   pinMode(PHASE, OUTPUT);
   pinMode(SLEEP, OUTPUT);
 
-  //Sleep and EN pin are tied together.
+  //sleep and EN pin are tied together.
   analogWrite(EN, 127);
+
+  //configuiring a timer interupt
+
+  //enable normal mode.
+  TCCR1A = 0;
+  TCCR1B = 0;
+
+  //set the prescaler
+  TCCR1B |= (1 << CS10); //prescaler is 1.  
+
+  //enable the overflow interrupt
+  TIMSK1 |= (1 << TOIE1);
 }
+
+ISR(TIMER_OVF_vect) {
+  Serial.println(millis());
+}
+
 
 void loop()
 {
