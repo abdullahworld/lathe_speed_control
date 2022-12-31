@@ -40,14 +40,17 @@ void setup() {
   pinMode(PHASE, OUTPUT);
   pinMode(SLEEP, OUTPUT);
   pinMode(MODE, OUTPUT);
+  
   digitalWrite(MODE, HIGH);
   digitalWrite(SLEEP, HIGH);
+  digitalWrite(PHASE, LOW);
 
-  pinMode(3, OUTPUT);
-  TCCR2A = _BV(COM2A1) | _BV(COM2B1) | _BV(WGM21) | _BV(WGM20);
-  TCCR2B = _BV(CS21);
-  OCR2A = 180;
-  OCR2B = 50;
+  pinMode(EN, OUTPUT);
+  analogWrite(EN, 20);
+//  TCCR2A = _BV(COM2A1) | _BV(COM2B1) | _BV(WGM21) | _BV(WGM20);
+//  TCCR2B = _BV(CS21);
+//  OCR2A = 180;
+//  OCR2B = 50;
   interrupts();
 
   
