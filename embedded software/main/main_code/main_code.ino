@@ -1,23 +1,34 @@
 
 #include <LiquidCrystal_I2C.h>
 #include <Wire.h>
+#include <stdint.h>
 
-
-//User controls
+// User controls
 #define R_POT A1
-#define AUTO 8 //S3
-#define BUT_CCW 7 //S2
-#define BUT_CW 5 //S1
+#define AUTO 8    // S3
+#define BUT_CCW 7 // S2
+#define BUT_CW 5  // S1
 
-//Motor controls
+// Motor controls
 #define EN 3
 #define PHASE 4
-#define SLEEP 1
 
+typedef void (*task_function_p)(void);
+
+typedef struct
+{
+  uint16_t period;
+  uint16_t elapsed_time;
+  task_function_p task_function;
+  const char *name;
+} task_info_t;
 
 LiquidCrystal_I2C lcd(0x27, 16, 2); // set the LCD address to 0x27 for a 16 chars and 2 line display
 
-int r_pot;
+// static task_info_t[] = 
+// {
+//   {.task_function = }
+// }
 
 void setup()
 {
@@ -29,51 +40,24 @@ void setup()
   lcd.print("System starting");
   delay(1000);
   lcd.clear();
-  
-  //configuring the buttons.
+
+  // configuring the buttons.
   pinMode(AUTO, INPUT_PULLUP);
   pinMode(BUT_CCW, INPUT_PULLUP);
   pinMode(BUT_CW, INPUT_PULLUP);
 
   pinMode(EN, OUTPUT);
   pinMode(PHASE, OUTPUT);
-  pinMode(SLEEP, OUTPUT);
-
-  //sleep and EN pin are tied together.
-  analogWrite(EN, 127);
-
-  //configuiring a timer interupt
-
-  //enable normal mode.
-  TCCR1A = 0;
-  TCCR1B = 0;
-
-  //set the prescaler
-  TCCR1B |= (1 << CS10); //prescaler is 1.  
-
-  //enable the overflow interrupt
-  TIMSK1 |= (1 << TOIE1);
 }
-
-ISR(TIMER_OVF_vect) {
-  Serial.println(millis());
-}
-
 
 void loop()
 {
-  r_pot = analogRead(R_POT);
 
-  Serial.println(r_pot);
-  lcd.setCursor(0,0);
-  lcd.print("RPOT: ");
-  lcd.setCursor(6,0);
-  lcd.print(r_pot);
 
   int auto_val = digitalRead(AUTO);
   int cw_val = digitalRead(BUT_CW);
   int ccw_val = digitalRead(BUT_CCW);
-  
+
   Serial.print("Auto Val: ");
   Serial.println(auto_val);
 
@@ -83,6 +67,6 @@ void loop()
   Serial.print("CCW Val: ");
   Serial.println(ccw_val);
   digitalWrite(PHASE, HIGH);
-//  delay(2000);
-//  digitalWrite(PHASE, LOW);
+  //  delay(2000);
+  //  digitalWrite(PHASE, LOW);
 }
