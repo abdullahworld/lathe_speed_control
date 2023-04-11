@@ -25,10 +25,25 @@ typedef struct
 
 LiquidCrystal_I2C lcd(0x27, 16, 2); // set the LCD address to 0x27 for a 16 chars and 2 line display
 
-// static task_info_t[] = 
-// {
-//   {.task_function = }
-// }
+static task_info_t[] =
+    {{.task_function = read_buttons, .period = 100, .elasped_time = 0, .name = "Read buttons"} {.task_function = get_current_speed, .period = 100, .elasped_time = 0, .name = "Get Lathe speed"} {.task_function = update_motors, .period = 100, .elasped_time = 0, .name = "Update the motors"}};
+
+void update_motors(void)
+{
+  return;
+}
+
+void get_current_speed(void)
+{
+  return;
+}
+
+void read_buttons(void)
+{
+  int auto_val = digitalRead(AUTO);
+  int cw_val = digitalRead(BUT_CW);
+  int ccw_val = digitalRead(BUT_CCW);
+}
 
 void setup()
 {
@@ -52,12 +67,6 @@ void setup()
 
 void loop()
 {
-
-
-  int auto_val = digitalRead(AUTO);
-  int cw_val = digitalRead(BUT_CW);
-  int ccw_val = digitalRead(BUT_CCW);
-
   Serial.print("Auto Val: ");
   Serial.println(auto_val);
 
