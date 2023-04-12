@@ -13,6 +13,9 @@
 #define EN 3
 #define PHASE 4
 
+// Revolution pulse
+#define REV_PULSE 2
+
 typedef void (*task_function_p)(void);
 
 typedef struct
@@ -26,7 +29,12 @@ typedef struct
 LiquidCrystal_I2C lcd(0x27, 16, 2); // set the LCD address to 0x27 for a 16 chars and 2 line display
 
 static task_info_t[] =
-    {{.task_function = read_buttons, .period = 100, .elasped_time = 0, .name = "Read buttons"} {.task_function = get_current_speed, .period = 100, .elasped_time = 0, .name = "Get Lathe speed"} {.task_function = update_motors, .period = 100, .elasped_time = 0, .name = "Update the motors"}};
+{
+  {.task_function = read_buttons, .period = 100, .elasped_time = 0, .name = "Read buttons"} 
+  {.task_function = get_current_speed, .period = 100, .elasped_time = 0, .name = "Get Lathe speed"}
+  {.task_function = update_motors, .period = 100, .elasped_time = 0, .name = "Update the motor position"}
+  {.task_function = display_lcd, .period = 100, .elasped_time = 0, .name = "Update LCD display"}
+};
 
 void update_motors(void)
 {
@@ -35,7 +43,7 @@ void update_motors(void)
 
 void get_current_speed(void)
 {
-  return;
+  //NEED TO MAKE THIS INTO INTERRUPT
 }
 
 void read_buttons(void)
