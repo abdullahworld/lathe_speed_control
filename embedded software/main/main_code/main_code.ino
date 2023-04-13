@@ -28,22 +28,34 @@ typedef struct
 
 LiquidCrystal_I2C lcd(0x27, 16, 2); // set the LCD address to 0x27 for a 16 chars and 2 line display
 
-static task_info_t[] =
-{
-  {.task_function = read_buttons, .period = 100, .elasped_time = 0, .name = "Read buttons"} 
-  {.task_function = get_current_speed, .period = 100, .elasped_time = 0, .name = "Get Lathe speed"}
-  {.task_function = update_motors, .period = 100, .elasped_time = 0, .name = "Update the motor position"}
-  {.task_function = display_lcd, .period = 100, .elasped_time = 0, .name = "Update LCD display"}
-};
+
+static uint32_t prev_tech_counter = 0;
+static uint32_t tach_counter = 0;
+static uint32_t prev_time = 0;
 
 void update_motors(void)
 {
   return;
 }
 
-void get_current_speed(void)
+void increment_tach_counter(void)
 {
-  //NEED TO MAKE THIS INTO INTERRUPT
+  tach_counter++;
+}
+
+int32_t get_current_speed(void)
+{
+
+  // rpm is equal to the number of ticks divided by time then convert to rpm.
+  uint32_t delta_tach_counter = tach_counter - prev_tech_counter;
+  uint32_t current_time = millis();
+  uint32_t delta_time = current_time - prev_time;
+  prev_time = current_time;
+  // get speed in ticks per millisecond
+  int32_t current_speed = delta_tach_counter / delta_time;
+  int32_t current_speed_rpm = current_speed * 3600000;
+
+  return current_speed_rpm;
 }
 
 void read_buttons(void)
@@ -69,9 +81,25 @@ void setup()
   pinMode(BUT_CCW, INPUT_PULLUP);
   pinMode(BUT_CW, INPUT_PULLUP);
 
+  // configure h-bridge PWM signals
   pinMode(EN, OUTPUT);
   pinMode(PHASE, OUTPUT);
+
+
+  // configure the pulse from tachometer as in interrupt
+  pinMode(REV_PULSE, INPUT_PULL_UP);
+  attachInterrupt(digitalPinToInterrupt(REV_PULSE), increment_tach_counter, FALLING);
 }
+
+static task_info_t[] =
+{
+  {.task_function = read_buttons, .period = 100, .elasped_time = 0, .name = "Read buttons"} 
+  {.task_function = get_current_speed, .period = 100, .elasped_time = 0, .name = "Get Lathe speed"}
+  {.task_function = update_motors, .period = 100, .elasped_time = 0, .name = "Update the motor position"}
+  {.task_function = display_lcd, .period = 100, .elasped_time = 0, .name = "Update LCD display"}
+  {.task_function = get_current_speed, .period = 100, .elasped_time = 0, .name = "Get current speed"}
+};
+
 
 void loop()
 {
