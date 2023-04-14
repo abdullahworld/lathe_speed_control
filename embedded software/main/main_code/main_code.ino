@@ -101,15 +101,28 @@ static task_info_t periodic_tasks[] =
 };
 
 
-void loop()
-{
+void run_all_tasks(void)
+{  
   uint32_t i;
   task_info_t *task_p;
 
   for (int i = 0; i < (sizeof(periodic_tasks) / sizeof(periodic_tasks[i])); i++)
   {
     task_p = &periodic_tasks[i];
+
+    if (task_p->task_function != NULL)
+    {
+      task_p->elapsed_time++;
+      if (task_p->elapsed_time >= task_p->period)
+      {
+        task_p->elapsed_time = 0;
+        task_p->task_function();
+      }
+    }
   }
+}
 
-
+void loop()
+{
+  run_all_tasks();
 }
