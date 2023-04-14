@@ -91,7 +91,7 @@ void setup()
   attachInterrupt(digitalPinToInterrupt(REV_PULSE), increment_tach_counter, FALLING);
 }
 
-static task_info_t[] =
+static task_info_t periodic_tasks[] =
 {
   {.task_function = read_buttons, .period = 100, .elasped_time = 0, .name = "Read buttons"} 
   {.task_function = get_current_speed, .period = 100, .elasped_time = 0, .name = "Get Lathe speed"}
@@ -103,15 +103,13 @@ static task_info_t[] =
 
 void loop()
 {
-  Serial.print("Auto Val: ");
-  Serial.println(auto_val);
+  uint32_t i;
+  task_info_t *task_p;
 
-  Serial.print("CW Val: ");
-  Serial.println(cw_val);
+  for (int i = 0; i < (sizeof(periodic_tasks) / sizeof(periodic_tasks[i])); i++)
+  {
+    task_p = &periodic_tasks[i];
+  }
 
-  Serial.print("CCW Val: ");
-  Serial.println(ccw_val);
-  digitalWrite(PHASE, HIGH);
-  //  delay(2000);
-  //  digitalWrite(PHASE, LOW);
+
 }
