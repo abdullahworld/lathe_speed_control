@@ -11,10 +11,19 @@
 
 // Motor controls
 #define EN 3
-#define PHASE 4
+#define PH 4
 
 // Revolution pulse
 #define REV_PULSE 2
+
+LiquidCrystal_I2C lcd(0x27, 16, 2); // set the LCD address to 0x27 for a 16 chars and 2 line display
+
+static uint32_t prev_tech_counter = 0;
+static uint32_t tach_counter = 0;
+static uint32_t prev_time = 0;
+static int32_t current_speed_rpm;
+
+
 
 typedef void (*task_function_p)(void);
 
@@ -26,26 +35,44 @@ typedef struct
   const char *name;
 } task_info_t;
 
-LiquidCrystal_I2C lcd(0x27, 16, 2); // set the LCD address to 0x27 for a 16 chars and 2 line display
+static void update_motors(void);
+static void update_display(void);
+static void software_pwm(void);
+void read_buttons(void);
+static void get_current_speed(void);
 
-
-static uint32_t prev_tech_counter = 0;
-static uint32_t tach_counter = 0;
-static uint32_t prev_time = 0;
-
-void update_motors(void)
+task_info_t periodic_tasks[] =
 {
-  return;
+  {.period = 100, .elapsed_time = 0, .task_function = read_buttons, .name = "Read buttons"},
+  {.period = 100, .elapsed_time = 0, .task_function = get_current_speed, .name = "Get Lathe speed"},
+  {.period = 100, .elapsed_time = 0, .task_function = software_pwm, .name = "Update the motor position"},
+  {.period = 100, .elapsed_time = 0, .task_function = update_display, .name = "Update LCD display"},
+};
+
+
+
+// static void update_motors(void)
+// {
+
+// }
+
+void software_pwm()
+{
+  digitalWrite(EN, HIGH);
+  digitalWrite(PH, LOW);
+  delayMicroseconds(5000);
+  digitalWrite(EN, LOW);
+  digitalWrite(PH, HIGH);
+  delayMicroseconds(5000);
 }
 
-void increment_tach_counter(void)
+static void increment_tach_counter(void)
 {
   tach_counter++;
 }
 
-int32_t get_current_speed(void)
+static void get_current_speed(void)
 {
-
   // rpm is equal to the number of ticks divided by time then convert to rpm.
   uint32_t delta_tach_counter = tach_counter - prev_tech_counter;
   uint32_t current_time = millis();
@@ -53,7 +80,7 @@ int32_t get_current_speed(void)
   prev_time = current_time;
   // get speed in ticks per millisecond
   int32_t current_speed = delta_tach_counter / delta_time;
-  int32_t current_speed_rpm = current_speed * 3600000;
+  current_speed_rpm = current_speed * 3600000;
 
   return current_speed_rpm;
 }
@@ -63,6 +90,11 @@ void read_buttons(void)
   int auto_val = digitalRead(AUTO);
   int cw_val = digitalRead(BUT_CW);
   int ccw_val = digitalRead(BUT_CCW);
+}
+
+static void update_display(void)
+{
+  return;
 }
 
 void setup()
@@ -83,46 +115,44 @@ void setup()
 
   // configure h-bridge PWM signals
   pinMode(EN, OUTPUT);
-  pinMode(PHASE, OUTPUT);
+  pinMode(PH, OUTPUT);
 
 
   // configure the pulse from tachometer as in interrupt
-  pinMode(REV_PULSE, INPUT_PULL_UP);
+  pinMode(REV_PULSE, INPUT_PULLUP);
   attachInterrupt(digitalPinToInterrupt(REV_PULSE), increment_tach_counter, FALLING);
+
+
+
 }
 
-static task_info_t periodic_tasks[] =
-{
-  {.task_function = read_buttons, .period = 100, .elasped_time = 0, .name = "Read buttons"} 
-  {.task_function = get_current_speed, .period = 100, .elasped_time = 0, .name = "Get Lathe speed"}
-  {.task_function = update_motors, .period = 100, .elasped_time = 0, .name = "Update the motor position"}
-  {.task_function = display_lcd, .period = 100, .elasped_time = 0, .name = "Update LCD display"}
-  {.task_function = get_current_speed, .period = 100, .elasped_time = 0, .name = "Get current speed"}
-};
 
+// void run_all_tasks(void)
+// {  
+//   uint32_t i;
+//   task_info_t *task_p;
 
-void run_all_tasks(void)
-{  
-  uint32_t i;
-  task_info_t *task_p;
+//   for (int i = 0; i < (sizeof(periodic_tasks) / sizeof(periodic_tasks[i])); i++)
+//   {
+//     task_p = &periodic_tasks[i];
 
-  for (int i = 0; i < (sizeof(periodic_tasks) / sizeof(periodic_tasks[i])); i++)
-  {
-    task_p = &periodic_tasks[i];
-
-    if (task_p->task_function != NULL)
-    {
-      task_p->elapsed_time++;
-      if (task_p->elapsed_time >= task_p->period)
-      {
-        task_p->elapsed_time = 0;
-        task_p->task_function();
-      }
-    }
-  }
-}
+//     if (task_p->task_function != NULL)
+//     {
+//       task_p->elapsed_time++;
+//       if (task_p->elapsed_time >= task_p->period)
+//       {
+//         task_p->elapsed_time = 0;
+//         task_p->task_function();
+//       }
+//     }
+//   }
+// }
 
 void loop()
 {
-  run_all_tasks();
+  int i = 0;
+  // run_all_tasks();
+  Serial.print("Tach counter: "); 
+  Serial.println(tach_counter);
+
 }

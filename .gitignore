@@ -1,5 +1,6 @@
 *.BomDoc*
 *.BomDoc
 *.SchDoc*
-*.PcbDoc*
+*.PcbDoc* 
+*.PcbDoc* 
 *.vscode*

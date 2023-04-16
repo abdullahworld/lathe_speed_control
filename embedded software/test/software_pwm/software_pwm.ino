@@ -42,17 +42,17 @@ void setup()
   lcd.clear();
 
   //configuring h-bridge driver circutry.  
-  pinMode(INPUT_A, OUTPUT);
+  pinMode(EN, OUTPUT);
   pinMode(INPUT_B, OUTPUT);
 }
 
 void software_pwm()
 {
-  digitalWrite(INPUT_A, HIGH);
-  digitalWrite(INPUT_B, LOW);
+  digitalWrite(EN, HIGH);
+  digitalWrite(PH, LOW);
   delayMicroseconds(5000);
-  digitalWrite(INPUT_A, LOW);
-  digitalWrite(INPUT_B, HIGH);
+  digitalWrite(EN, LOW);
+  digitalWrite(PH, HIGH);
   delayMicroseconds(5000);
 }
  
