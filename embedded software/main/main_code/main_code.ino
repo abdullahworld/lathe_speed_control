@@ -24,7 +24,6 @@ static uint32_t prev_time = 0;
 static int32_t current_speed_rpm;
 
 
-
 typedef void (*task_function_p)(void);
 
 typedef struct
@@ -41,20 +40,21 @@ static void software_pwm(void);
 void read_buttons(void);
 static void get_current_speed(void);
 
+
 task_info_t periodic_tasks[] =
 {
-  {.period = 100, .elapsed_time = 0, .task_function = read_buttons, .name = "Read buttons"},
-  {.period = 100, .elapsed_time = 0, .task_function = get_current_speed, .name = "Get Lathe speed"},
-  {.period = 100, .elapsed_time = 0, .task_function = software_pwm, .name = "Update the motor position"},
+  {.period = 20, .elapsed_time = 0, .task_function = read_buttons, .name = "Read buttons"},
+  {.period = 2, .elapsed_time = 0, .task_function = get_current_speed, .name = "Get Lathe speed"},
+  {.period = 2, .elapsed_time = 0, .task_function = software_pwm, .name = "Update the motor position"},
   {.period = 100, .elapsed_time = 0, .task_function = update_display, .name = "Update LCD display"},
 };
-
 
 
 // static void update_motors(void)
 // {
 
 // }
+
 
 void software_pwm()
 {
@@ -63,13 +63,13 @@ void software_pwm()
   delayMicroseconds(5000);
   digitalWrite(EN, LOW);
   digitalWrite(PH, HIGH);
-  delayMicroseconds(5000);
 }
 
 static void increment_tach_counter(void)
 {
   tach_counter++;
 }
+
 
 static void get_current_speed(void)
 {
@@ -81,9 +81,10 @@ static void get_current_speed(void)
   // get speed in ticks per millisecond
   int32_t current_speed = delta_tach_counter / delta_time;
   current_speed_rpm = current_speed * 3600000;
-
-  return current_speed_rpm;
+  
+  current_speed_rpm;
 }
+
 
 void read_buttons(void)
 {
@@ -92,10 +93,12 @@ void read_buttons(void)
   int ccw_val = digitalRead(BUT_CCW);
 }
 
+
 static void update_display(void)
 {
   return;
 }
+
 
 void setup()
 {
@@ -117,42 +120,41 @@ void setup()
   pinMode(EN, OUTPUT);
   pinMode(PH, OUTPUT);
 
-
   // configure the pulse from tachometer as in interrupt
   pinMode(REV_PULSE, INPUT_PULLUP);
   attachInterrupt(digitalPinToInterrupt(REV_PULSE), increment_tach_counter, FALLING);
-
-
-
 }
 
 
-// void run_all_tasks(void)
-// {  
-//   uint32_t i;
-//   task_info_t *task_p;
+void run_all_tasks(void)
+{  
+  uint32_t i;
+  task_info_t *task_p;
 
-//   for (int i = 0; i < (sizeof(periodic_tasks) / sizeof(periodic_tasks[i])); i++)
-//   {
-//     task_p = &periodic_tasks[i];
+  for (int i = 0; i < (sizeof(periodic_tasks) / sizeof(periodic_tasks[i])); i++)
+  {
+    task_p = &periodic_tasks[i];
 
-//     if (task_p->task_function != NULL)
-//     {
-//       task_p->elapsed_time++;
-//       if (task_p->elapsed_time >= task_p->period)
-//       {
-//         task_p->elapsed_time = 0;
-//         task_p->task_function();
-//       }
-//     }
-//   }
-// }
+    if (task_p->task_function != NULL)
+    {
+      task_p->elapsed_time++;
+      if (task_p->elapsed_time >= task_p->period)
+      {
+        task_p->elapsed_time = 0;
+        task_p->task_function();
+      }
+    }
+  }
+}
+
 
 void loop()
 {
   int i = 0;
-  // run_all_tasks();
+  run_all_tasks();
   Serial.print("Tach counter: "); 
   Serial.println(tach_counter);
+  Serial.print("Current speed (rpm): ");
+  Serial.println(current_speed_rpm);
 
 }
