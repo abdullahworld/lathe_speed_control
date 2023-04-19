@@ -21,14 +21,6 @@ LiquidCrystal_I2C lcd(0x27, 16, 2); // set the LCD address to 0x27 for a 16 char
 
 int r_pot;
 
-struct typedef
-{
-  uint16_t period;
-  uint16_t elapsed_time;
-  
-}
-
-
 
 void setup() 
 {
