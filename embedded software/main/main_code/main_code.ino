@@ -22,7 +22,7 @@ static uint32_t prev_tech_counter = 0;
 static uint32_t tach_counter = 0;
 static uint32_t prev_time = 0;
 static int32_t current_speed_rpm_global;
-static int32_t const reference_speed_rpm;
+static int32_t reference_speed_rpm;
 
 
 typedef void (*task_function_p)(void);
@@ -37,6 +37,7 @@ typedef struct
 
 static void update_motors(void);
 static void update_display(void);
+static void speed_controller(void);
 static void software_pwm(void);
 void read_buttons(void);
 static void get_current_speed(void);
@@ -87,7 +88,7 @@ int32_t calculate_speed(void)
   int32_t current_speed = delta_tach_counter / delta_time;
   int32_t current_speed_rpm = current_speed * 3600000;
 
-  return current_speed_rpm
+  return current_speed_rpm;
 }
 
 
@@ -113,25 +114,27 @@ static void update_display(void)
 
 int32_t get_reference_speed(void)
 {
-  unint32_t current_time = 0; 
-  int32_t current_speed_rpm = calculate_speed();
-  int32_t prev_speed_rpm = 0;
+  uint32_t current_time = 0; 
+  int32_t current_speed_rpm = -1; //Set current speed to be an impossible value
+  int32_t prev_speed_rpm = -2; //Set previous to be an impossible value
 
-  uint32_t tol_percent = 0.01
+  uint32_t tol_percent = 0.01;
   
   // Get into a steady speed for at least 30 seconds
   while (current_time < 30)
   {
-    delay(1000)
-    prev_speed_rpm = calculate_speed();
-    if (current_speed_rpm != prev_speed_rpm + prev_speed_rpm * tol_percent|| 
+    delay(1000);
+    current_speed_rpm = calculate_speed();
+    if (current_speed_rpm != prev_speed_rpm + prev_speed_rpm * tol_percent || 
         current_speed_rpm != prev_speed_rpm - prev_speed_rpm * tol_percent )
     {
       current_time = 0;
     }
-    current_time  += 1
+    current_speed_rpm = prev_speed_rpm; 
+    current_time += 1;
   }
 
+  Serial.println(current_speed_rpm);
   return current_speed_rpm;
 }
 
@@ -159,6 +162,8 @@ void setup()
   // configure the pulse from tachometer as in interrupt
   pinMode(REV_PULSE, INPUT_PULLUP);
   attachInterrupt(digitalPinToInterrupt(REV_PULSE), increment_tach_counter, FALLING);
+
+  analogWrite(EN, 125);
 
   reference_speed_rpm = get_reference_speed();
 }
@@ -188,10 +193,5 @@ void run_all_tasks(void)
 
 void loop()
 {
-  int i = 0;
   run_all_tasks();
-  Serial.print("Tach counter: "); 
-  Serial.println(tach_counter);
-  Serial.print("Current speed (rpm): ");
-  Serial.println(current_speed_rpm);
 }
