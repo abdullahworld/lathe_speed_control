@@ -79,6 +79,8 @@ static void increment_tach_counter(void)
 
 int32_t calculate_speed(void)
 {
+  Serial.print("Tach counter ");
+  Serial.println(tach_counter);
     // rpm is equal to the number of ticks divided by time then convert to rpm.
   uint32_t delta_tach_counter = tach_counter - prev_tech_counter;
   uint32_t current_time = millis();
@@ -87,6 +89,9 @@ int32_t calculate_speed(void)
   // get speed in ticks per millisecond
   int32_t current_speed = delta_tach_counter / delta_time;
   int32_t current_speed_rpm = current_speed * 3600000;
+
+  Serial.print("current speed rpm in calcualate speed function: ");
+  Serial.println(current_speed_rpm);
 
   return current_speed_rpm;
 }
@@ -124,13 +129,15 @@ int32_t get_reference_speed(void)
   while (current_time < 30)
   {
     delay(1000);
+    Serial.print("Current speed: ");
+    Serial.println(current_speed_rpm);
     current_speed_rpm = calculate_speed();
     if (current_speed_rpm != prev_speed_rpm + prev_speed_rpm * tol_percent || 
         current_speed_rpm != prev_speed_rpm - prev_speed_rpm * tol_percent )
     {
       current_time = 0;
     }
-    current_speed_rpm = prev_speed_rpm; 
+    prev_speed_rpm = current_speed_rpm; 
     current_time += 1;
   }
 
