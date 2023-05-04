@@ -19,7 +19,7 @@
 LiquidCrystal_I2C lcd(0x27, 16, 2); // set the LCD address to 0x27 for a 16 chars and 2 line display
 
 static uint32_t prev_tech_counter = 0;
-static uint32_t tach_counter = 0;
+static uint32_t current_tach_counter = 0;
 static uint32_t prev_time = 0;
 static int32_t current_speed_rpm_global;
 static int32_t reference_speed_rpm;
@@ -73,22 +73,24 @@ static void motor_anticlockwise()
 
 static void increment_tach_counter(void)
 {
-  tach_counter++;
+  current_tach_counter++;
 }
 
 
 int32_t calculate_speed(void)
 {
+  const uint32_t rev_s_to_rev_m = 60000;
   Serial.print("Tach counter ");
-  Serial.println(tach_counter);
+  Serial.println(current_tach_counter);
     // rpm is equal to the number of ticks divided by time then convert to rpm.
-  uint32_t delta_tach_counter = tach_counter - prev_tech_counter;
+  uint32_t delta_tach_counter = (current_tach_counter - prev_tech_counter) * rev_s_to_rev_m;
+  prev_tech_counter = current_tach_counter;
   uint32_t current_time = millis();
   uint32_t delta_time = current_time - prev_time;
   prev_time = current_time;
   // get speed in ticks per millisecond
   int32_t current_speed = delta_tach_counter / delta_time;
-  int32_t current_speed_rpm = current_speed * 3600000;
+  int32_t current_speed_rpm = current_speed;
 
   Serial.print("current speed rpm in calcualate speed function: ");
   Serial.println(current_speed_rpm);
@@ -132,8 +134,9 @@ int32_t get_reference_speed(void)
     Serial.print("Current speed: ");
     Serial.println(current_speed_rpm);
     current_speed_rpm = calculate_speed();
-    if (current_speed_rpm != prev_speed_rpm + prev_speed_rpm * tol_percent || 
-        current_speed_rpm != prev_speed_rpm - prev_speed_rpm * tol_percent )
+    if ((current_speed_rpm != prev_speed_rpm + prev_speed_rpm * tol_percent || 
+         current_speed_rpm != prev_speed_rpm - prev_speed_rpm * tol_percent) &&
+         current_speed_rpm != 0)
     {
       current_time = 0;
     }
@@ -200,5 +203,6 @@ void run_all_tasks(void)
 
 void loop()
 {
+  Serial.println("Tasks running!");
   run_all_tasks();
 }
